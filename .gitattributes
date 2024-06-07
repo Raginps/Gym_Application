@@ -1,0 +1,2 @@
+static/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+media/product_video/*.mp4 filter=lfs diff=lfs merge=lfs -text

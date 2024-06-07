@@ -1,0 +1,45 @@
+
+{% extends "index.html" %}
+{% block content %}
+
+<style>
+.items{
+  text-align: center;
+  margin-right: 22px;
+  margin-top: 65px;
+}
+
+</style>
+<div class="items">
+<div class="container">
+{% for messages in messages %}
+    <h6 class="text-danger">{{message}}</h6>
+    {% endfor %}
+
+<form method="POST">
+
+    {% csrf_token %}
+    
+    <h3>Login</h3>
+
+
+    <h6 class="text-danger">{{message}}</h6>
+    <label for="username">username</label>
+    <input type="text" id="username" name="username"required>
+    <label for="password">password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+</div>
+{% endblock %}
+{% comment %} <div class="info_section ">
+    
+    <div class="container-fluid ">
+      <div class="row mt-4" >
+        <div class="col-md-10 ml-auto mt-5">
+          <div class="row info_main-row ">
+            <div class="col-md-2 pr-1 ">
+
+    </div> {% endcomment %}
+
+

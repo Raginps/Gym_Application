@@ -1,0 +1,76 @@
+{% extends "merchant.html"%}
+{% block content%}
+{% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> {% endcomment %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> {% endcomment %}
+<div class="container mt-5">
+  <div class="content mt-5 text-center">
+    <h3 class="text-center">protein</h3>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"> Add Product</button>
+  </div>
+</div>
+
+<div class="container content mt-5">
+  <h5>Product Datas</h5>
+  <table class="table table-stripped">
+    <tr>
+      <th>product Name</th>
+      <th>product Category</th>
+      <th>product Description</th>
+      <th>product image</th>
+      <th>product price</th>
+    </tr>
+  {% for item in Myprotein %}
+  <tr>
+    <td>{{item.product_Name}}</td>
+    <td>{{item.product_Category}}</td>
+    <td>{{item.product_Description}}</td>
+    <td>{{item.product_image}}</td>
+    <td>{{item.product_price}}</td>
+
+    
+    <td><img src="{{item.product_image.url}}" height="50px" alt=""></td>
+    
+    
+    {% comment %} <td><img src="{{item.product_video.url}}" height="50px" alt="">  {% endcomment %}
+    
+    <td>
+    <a href="{% url 'deleteprotein' item.id %}"class="btn-outline-denger btn-sm" >delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+
+  </table>
+</div>
+
+
+
+<!-- Product Add model -->
+
+<!-- Model -->
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Product list</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- <div class="offcanvas-body"> -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="model-body">
+      {% for field in form %}
+      {{field.label}}:<br><br>
+      {{field}}<br><br>
+
+      {% endfor %} 
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="model">Close</button>
+      <button type="submit" name="submit" class="btn-primary">save changes</button>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock %}
+
+

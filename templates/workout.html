@@ -1,0 +1,86 @@
+{%extends "userIndex.html"%}
+{%block content %}
+<style>
+    .second {
+        display: flex;
+        justify-content: space-evenly;
+        
+
+    }
+    
+</style>
+
+
+ <div class="container-fluid p-5">
+        <div class="mb-5 text-center">
+            <h5 class="text-primary text-uppercase">Our</h5>
+            <h1 class="display-3 text-uppercase mb-0">workout</h1>
+        </div>
+        <div class="row g-5">
+        {% for work in workout %}
+            <div class="col-lg-4 col-md-6">
+                <div class="team-item position-relative">
+                    <div class="position-relative overflow-hidden rounded">
+                        <video src="{{work.product_video.url}}" controls width="400px">
+                    </div>
+                        <h5 class="text-primary text-uppercase">{{work.product_Name}} </h5><a class="btn col-sm-4 col-sm-offset-1 btn-lg" href="{% url 'commentsection' work.id %}"
+                        style="background-color:#fb641b;margin-left: 20px; color:#fff;font-size:1em;"><i
+                        style="font-size:1.2em;"></i>view</a>
+                        <p class="text-uppercase  text-uppercase ">{{work.product_Description}} </p>
+
+                        
+
+                    <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4">
+                        
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% comment %} <div class="frist">
+    <h1>NEW GYM WORKOUT </h1>
+    <div class="second">
+        {% for work in workout %}
+        <div class="items">
+            Workout: {{work.product_Name}}
+            <video src="{{work.product_video.url}}" controls width="400px">
+
+            </video>
+
+        </div>
+        {% endfor %}
+
+    </div>
+    <h1>youtube video</h1>
+    <iframe width="320" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+    <iframe width="320" height="345" src="https://youtu.be/PY6DrbX4W4o?si=cM1wyiF0oXvXMvnA"></iframe>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+ {% endcomment %}

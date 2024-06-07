@@ -1,0 +1,48 @@
+{%extends "userIndex.html"%}
+{% load static %}
+{%block content %}
+
+<style>
+    .container{
+        width:80%;
+        margin: auto;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>
+</head>
+<body>
+ <div class="container">
+    <h1 style="margin-top: 100px;"> CART</h1>
+
+<table class="table">
+    <tr>
+        <th>product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>image</th>
+        <th>Amout</th>
+        <th>Action</th>
+
+    </tr>
+    {% for i in carts %}
+    <tr>
+        <td>{{i.products.product_Name}}</td>
+        <td>{{i.products.product_price}}</td>
+        
+        <td><a href="{%url 'DecreasecartQunatity' i.id %}"  class="btn btn-primary btn-sm">-</a> {{i.quantity}} <a href="{%url 'IncreaseCartQuantity' i.id %}" class="btn btn-primary btn-sm">+</a></td>
+        
+        <td><img src="{{i.products.product_image.url}}" controls width="60px"></td>
+       
+   <td>{{i.totalprice}}</td>
+    <td>
+    <a href="{% url 'deletecart' i.id %}"class="btn-outline-denger btn-sm" >delete</a></td>
+
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

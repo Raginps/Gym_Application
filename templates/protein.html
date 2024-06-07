@@ -1,0 +1,59 @@
+{%extends "userIndex.html"%}
+{% load static %}
+{%block content %}
+
+<style>
+body{
+    background-color:black;
+
+}
+h1{
+    text-align: center;
+    color: white;
+}
+</style>
+
+<!-- <div class="frist">
+    <h1>protein </h1>
+    <div class="second">
+        {% for protein in product %}
+        <div class="items">
+            Protein: {{protein.product_Name}}
+
+            <img src="{{protein.product_image.url}}" alt="">
+
+        </div>
+        {% endfor %}
+ 
+    </div> 
+
+</div>
+ -->
+
+
+<div class="container-fluid p-5">
+    <div class="mb-5 text-center">
+        <h5 class="text-primary text-uppercase">Our</h5>
+        <h1 class="display-3 text-uppercase mb-0">protein</h1>
+    </div>
+    <div class="row g-5">
+        {% for protein in product %}
+        <div class="col-lg-4 col-md-6">
+            <div class="team-item position-relative">
+                <div class="position-relative overflow-hidden rounded">
+                    <img src="{{protein.product_image.url}}" controls width="400px">
+                    <div class="team-overlay">
+                    <a class="" href="{%url 'proteinsingleview' protein.id %}"><i class="fa fa-shopping-cart"style="font-size:48px;color:red"></i></i></a>
+                </div>
+                </div>
+                    <h5 class="text-primary text-uppercase">{{protein.product_Name}} </h5>
+                    {% comment %} <p class="text-uppercase  text-uppercase ">{{protein.product_Description}} </p> {% endcomment %}
+                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4">
+                </div>
+            </div>
+        </div>
+{% endfor %}
+    </div>
+</div>
+
+{% endblock %}

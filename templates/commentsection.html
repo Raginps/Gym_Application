@@ -1,0 +1,63 @@
+{%extends "userIndex.html"%}
+{% load static %}
+{%block content %}
+
+<style>
+    .file {
+        text-align: center;
+    }
+
+    .comments {
+        width: 90%;
+        margin: auto;
+        border-radius: 20px;
+        border: .5px solid rgb(245, 115, 115);
+        height: 500px;
+        padding: 20px;
+        position: relative;
+
+    }
+
+    .comment-form-control {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+    }
+</style>
+<div class="row mt-5">
+    <div class="col-md-8">
+        <div class="file">
+            <video src="{{workout.product_video.url}}" controls width="90%"> </video>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="comments">
+            {% for com in comm %}
+            <div class="comment-items">
+                <p>
+                    {{com.body}} <br>
+                    <span class="text-sm" style="font-size: xx-small;">{{com.created_on}} posted by {{com.user.first_name}}</span>
+
+                </p>
+            </div>
+            {% endfor %}
+
+
+            <div class="comment-form-control">
+                <form id="comment-form" method="post" action="{%url 'Comment' workout.id %}">
+                    {% csrf_token %}
+
+
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment" name="comment" required></textarea>
+                    <button class="btn btn-dark" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

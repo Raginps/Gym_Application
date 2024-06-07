@@ -1,0 +1,46 @@
+{%extends "userIndex.html"%}
+{% block content %}
+
+
+<style>
+    .items{
+        width: 80%;
+        padding: 200px;
+
+    }
+    .items img{
+        width: 80%;
+    }
+
+    .button {
+  background-color: #ff1e05c0;
+  border:none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 13px;
+}
+    
+</style>
+<h2>PRODUCT SINGLE VIEW</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="items">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{{protein.product_image.url}}" alt="">
+<h3>Product Name:{{product.product_Name}}</h3>
+<h1>Description:{{product_Description}} </h1>
+    <a href=""class="button"> Add to Cart</a>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

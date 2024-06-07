@@ -1,0 +1,197 @@
+{% extends "userIndex.html" %}
+{% block content %}
+
+
+  <style>
+    .file {
+        text-align: center;
+    }
+
+    .comments {
+        width: 100%;
+        margin-bottom: 2px solid #aaa;
+        border-radius: 20px;
+        border: .5px solid rgb(245, 115, 115);
+        height: 500px;
+        padding: 20px;
+        overflow:scroll;
+        font-size: 1rem;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        outline: none;
+        background-color: transparent;
+        margin-bottom: 10px; 
+        transition: .5s;
+
+    }
+
+    .comment-form-control {
+        transition:all;
+        margin-top: 20px;
+        position:sticky;
+        bottom: 10px;
+        width: 100%;
+        
+    }
+   
+</style>
+<body>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Product picture -->
+        <div class="col-sm-5">
+          <div class="thumbnail">
+            <img src="{{protein.product_image.url}}" controls width="400px" class="img-responsive" alt="">
+
+            <div class="caption">
+              <div class="row buttons">
+                <br>
+
+                <a class="btn  col-sm-4 col-sm-offset-2 btn-lg" href="{% url 'AddToCart' protein.id %}"
+                  style="background-color:#ff9f00; color:#fff;font-size:1em;"><span
+                    class="glyphicon glyphicon-shopping-cart"></span>&nbsp;ADD TO CART</a>
+
+
+                <button class="btn col-sm-4 col-sm-offset-1 btn-lg"
+                  style="background-color:#fb641b;margin-left: 20px; color:#fff;font-size:1em;"><i class="fa fa-bolt"
+                    style="font-size:1.2em;"></i>BUY NOW</button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Product Description -->
+        <div class="col-sm-7 desc">
+          <div>
+            <ol class="breadcrumb col-sm-12" style="color:#ff9f00;"><i>{{protein.product_Category}}</i></ol>
+            <h4>{{protein.product_Name}}</h4>
+            <div class="row">
+              <div class="col-sm-2">
+
+              </div>
+            </div>
+          </div>
+          <div class="container col-xs-12" style="margin-top:50px;">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="col-sm-12">
+                  <h3>{{protein.product_price}}</h3>
+                  <div> </div>
+                  <h3>PRODUCT DESCRIPTION</h3>
+                  <p>{{protein.product_Description}}</p>
+
+
+                 
+                </div>
+
+              </div>
+            </div>
+          </div>
+  </section>
+
+  <div class="row mt-5">
+    <div class="col-md-8">   
+    </div>
+    <div class="col-md-4">
+        <div class="comments">
+          {% for ur in comm %}
+            <div class="comment-items">
+                <p>
+                  {{ur.body}} <br>
+                    <span class="text-sm" style="font-size: xx-small;">{{ur.created_on}} posted by {{ur.user.first_name}}</span>
+
+                </p>
+            </div>
+            {% endfor %}
+
+
+            <div class="comment-form-control">
+                <form id="comment-form" method="post" action="{%url 'customercoment' protein.id %}">
+                    {% csrf_token %}
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment" name="comment" required></textarea>
+                    <button class="btn btn-dark" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  <!-- <div class="row mt-5">
+    <div class="col-md-8">
+       
+    </div>
+    <div class="col-md-4">
+        <div class="comments">
+          {% for ur in comm %}
+            <div class="comment-items">
+                <p>
+                    {{ur.body}} <br>
+                    <span class="text-sm" style="font-size: xx-small;">{{ur.created_on}}posted by {{ur.user.first_name}} </span>
+
+                </p>
+            </div>
+            {% endfor %}
+
+
+            <div class="comment-form-control">
+                <form id="comment-form" method="post" action="{%url 'customercoment' protein.id %}">
+                    {% csrf_token %}
+
+
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" id="comment" name="comment" required></textarea>
+                    <button class="btn btn-dark" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+  <!-- FOOTER -->
+
+
+</body>
+<!-- <style>
+    .items{
+        width: 80%;
+        padding: 200px;
+
+    }
+    .items img{
+        width: 80%;
+    }
+
+    .button {
+  background-color: #ff1e05c0;
+  border:none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: 13px;
+}
+    
+</style>
+<h2>PRODUCT SINGLE VIEW</h2>
+
+<h1><img src="{{protein.product_image.url}}"  controls width="400px  alt=""> </h1>
+
+<h3>Product Name:{{protein.product_Description}}</h3>
+<h1>Price:{{protein.product_price}}</h1>
+
+    <a href=""class="button"> Add to Cart</a>
+        </div>
+    </div>
+</div> -->
+{% endblock %}
